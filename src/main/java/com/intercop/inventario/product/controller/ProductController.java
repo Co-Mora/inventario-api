@@ -1,17 +1,11 @@
 package com.intercop.inventario.product.controller;
-import com.intercop.inventario.notification.model.Notification;
-import com.intercop.inventario.notification.service.NotificationService;
 import com.intercop.inventario.product.model.Product;
 import com.intercop.inventario.product.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/products")
@@ -42,7 +36,6 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public Mono<ResponseEntity<Product>> updateProduct(@PathVariable String id, @RequestBody Product product) {
-        String updatedMessage = "Product " + product.getName() + " has been updated";
         return productService.updateProduct(id, product)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());

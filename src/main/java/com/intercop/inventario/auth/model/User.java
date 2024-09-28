@@ -48,10 +48,6 @@ public class User implements UserDetails {
         return password;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
     @Override
     public boolean isEnabled() {
         return enabled;

@@ -10,8 +10,8 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-  security:
-    jwt:
-      token:
-        secret-key: yourSecretKey
-        expire-length: 3600000 # 1 hour in milliseconds
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
